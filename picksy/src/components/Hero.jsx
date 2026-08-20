@@ -1,6 +1,14 @@
+ import heroImage from "../assets/hero.jpeg";
+
 function Hero() {
   return (
-    <section className="hero">
+    <section
+      className="hero"
+      style={{
+        backgroundImage: `url(${heroImage})`
+      }}
+    >
+      <div className="hero-overlay"></div>
 
       <div className="container hero-content">
 
@@ -31,15 +39,7 @@ function Hero() {
 
         </div>
 
-        <div className="hero-image">
-          <img
-            src="/images/hero.jpg"
-            alt="Picksy collection"
-          />
-        </div>
-
       </div>
-
     </section>
   );
 }
