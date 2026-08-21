@@ -1,14 +1,25 @@
- function Footer() {
+ import logo from "../assets/picksy-logo.jpeg";
+
+function Footer() {
   return (
     <footer className="footer">
 
       <div className="container footer-grid">
 
-        {/* Brand */}
+        {/* BRAND */}
         <div className="footer-brand">
-          <h2 className="footer-logo">
-            picksy<span>.</span>
-          </h2>
+
+          <div className="footer-logo-wrapper">
+            <img
+              src={logo}
+              alt="Picksy Logo"
+              className="footer-logo-image"
+            />
+
+            <h2 className="footer-logo">
+              picksy
+            </h2>
+          </div>
 
           <p>
             Little things that make
@@ -20,10 +31,10 @@
             ✦
             <span></span>
           </div>
+
         </div>
 
-
-        {/* Shop */}
+        {/* SHOP */}
         <div className="footer-column">
           <h3>Shop</h3>
 
@@ -40,8 +51,7 @@
           </a>
         </div>
 
-
-        {/* Picksy */}
+        {/* PICKSY */}
         <div className="footer-column">
           <h3>Picksy</h3>
 
@@ -60,12 +70,12 @@
 
       </div>
 
-
-      {/* Footer Bottom */}
+      {/* FOOTER BOTTOM */}
       <div className="container footer-bottom">
 
         <p>
-          © {new Date().getFullYear()} Picksy. All rights reserved.
+          © {new Date().getFullYear()} Picksy.
+          All rights reserved.
         </p>
 
         <div className="footer-credit">

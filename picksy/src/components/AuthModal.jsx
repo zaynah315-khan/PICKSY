@@ -1,25 +1,17 @@
-import { useState } from "react";
+ import { useState } from "react";
 import {
   signIn,
   signUp
 } from "../services/authService";
 
-function AuthModal({
-  onClose
-}) {
+import logo from "../assets/picksy-logo.jpeg";
+
+function AuthModal({ onClose }) {
   const [mode, setMode] = useState("login");
-
-  const [email, setEmail] =
-    useState("");
-
-  const [password, setPassword] =
-    useState("");
-
-  const [loading, setLoading] =
-    useState(false);
-
-  const [message, setMessage] =
-    useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -41,7 +33,6 @@ function AuthModal({
       setTimeout(() => {
         onClose();
       }, 1200);
-
     } catch (error) {
       setMessage(error.message);
     } finally {
@@ -54,24 +45,35 @@ function AuthModal({
       className="modal-backdrop"
       onClick={onClose}
     >
-
       <div
         className="auth-modal"
-        onClick={(e) =>
-          e.stopPropagation()
-        }
+        onClick={(e) => e.stopPropagation()}
       >
 
+        {/* CLOSE BUTTON */}
         <button
           className="modal-close"
           onClick={onClose}
+          aria-label="Close"
         >
           ×
         </button>
 
+        {/* PICKSY LOGO */}
+        <div className="auth-logo">
+          <img
+            src={logo}
+            alt="Picksy Logo"
+          />
+        </div>
+
+        {/* AUTH HEADER */}
         <div className="auth-header">
+
           <p className="eyebrow">
-            WELCOME TO
+            {mode === "login"
+              ? "WELCOME BACK"
+              : "WELCOME TO"}
           </p>
 
           <h2>
@@ -81,15 +83,21 @@ function AuthModal({
           <p>
             {mode === "login"
               ? "Sign in to continue shopping."
-              : "Create your Picksy account."}
+              : "Create your Picksy account."
+            }
           </p>
+
         </div>
 
+        {/* AUTH FORM */}
         <form onSubmit={handleSubmit}>
 
-          <label>Email</label>
+          <label htmlFor="email">
+            Email
+          </label>
 
           <input
+            id="email"
             type="email"
             placeholder="you@example.com"
             value={email}
@@ -99,9 +107,12 @@ function AuthModal({
             required
           />
 
-          <label>Password</label>
+          <label htmlFor="password">
+            Password
+          </label>
 
           <input
+            id="password"
             type="password"
             placeholder="••••••••"
             value={password}
@@ -112,41 +123,47 @@ function AuthModal({
           />
 
           <button
+            type="submit"
             className="primary-button auth-submit"
             disabled={loading}
           >
             {loading
               ? "Please wait..."
               : mode === "login"
-              ? "Login"
-              : "Create Account"}
+                ? "Login"
+                : "Create Account"
+            }
           </button>
 
         </form>
 
+        {/* MESSAGE */}
         {message && (
           <p className="auth-message">
             {message}
           </p>
         )}
 
+        {/* SWITCH LOGIN / SIGNUP */}
         <button
+          type="button"
           className="switch-auth"
-          onClick={() =>
+          onClick={() => {
             setMode(
               mode === "login"
                 ? "signup"
                 : "login"
-            )
-          }
+            );
+            setMessage("");
+          }}
         >
           {mode === "login"
             ? "Don't have an account? Sign up"
-            : "Already have an account? Login"}
+            : "Already have an account? Login"
+          }
         </button>
 
       </div>
-
     </div>
   );
 }

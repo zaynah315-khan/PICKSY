@@ -51,7 +51,6 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-
   color: var(--text);
 
   background:
@@ -144,10 +143,20 @@ img {
   gap: 30px;
 }
 
-.logo,
-.footer-logo {
-  font-family: Georgia, serif;
 
+/* =========================================================
+   PICKSY HEADER LOGO
+========================================================= */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: var(--text);
+
+  font-family: Georgia, serif;
   font-size: 30px;
   font-weight: 700;
 
@@ -157,20 +166,39 @@ img {
     transform 0.3s ease;
 }
 
-.logo:hover,
-.footer-logo:hover {
+.logo img {
+  width: 42px;
+  height: 42px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.logo span {
+  color: var(--text);
+}
+
+.logo:hover {
   transform: translateY(-2px);
 }
 
-.logo span,
-.footer-logo span,
-.auth-header h2 span {
-  color: var(--gold);
+.logo:hover img {
+  transform: scale(1.05);
 }
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 .nav {
   display: flex;
-
   gap: 32px;
 
   color: var(--muted);
@@ -213,9 +241,13 @@ img {
   width: 100%;
 }
 
+
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
+
 .header-actions {
   display: flex;
-
   align-items: center;
 
   gap: 12px;
@@ -224,7 +256,6 @@ img {
 .header-button,
 .cart-button {
   border: 0;
-
   background: transparent;
 
   color: var(--text);
@@ -293,7 +324,6 @@ img {
   width: 100%;
 
   padding: 0;
-
   margin: 0;
 
   overflow: hidden;
@@ -305,7 +335,6 @@ img {
   width: 100%;
 
   height: 680px;
-
   min-height: 680px;
 
   margin: 0;
@@ -320,7 +349,9 @@ img {
 }
 
 
-/* Hero Image */
+/* =========================================================
+   HERO IMAGE
+========================================================= */
 
 .hero-banner-image {
   position: absolute;
@@ -341,7 +372,9 @@ img {
 }
 
 
-/* Hero Overlay */
+/* =========================================================
+   HERO OVERLAY
+========================================================= */
 
 .hero-overlay {
   position: absolute;
@@ -413,7 +446,6 @@ img {
 
 .marquee-track {
   display: flex;
-
   align-items: center;
 
   width: max-content;
@@ -460,7 +492,6 @@ img {
   position: absolute;
 
   left: 8%;
-
   top: 53%;
 
   transform: translateY(-40%);
@@ -1261,7 +1292,8 @@ img {
 .cart-item:hover {
   transform: translateY(-3px);
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow);
 }
 
 .cart-item > img {
@@ -1338,7 +1370,8 @@ img {
 
   top: 110px;
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow);
 }
 
 .cart-summary h2 {
@@ -1463,17 +1496,19 @@ img {
 .auth-modal {
   width: min(450px, 100%);
 
-  padding: 40px;
+  padding: 42px;
 
   position: relative;
 
   background: white;
 
+  border: 1px solid var(--border);
+
   border-radius: 25px;
 
   box-shadow:
     0 30px 80px
-    rgba(0, 0, 0, 0.2);
+    rgba(0, 0, 0, 0.20);
 
   animation:
     modalEnter 0.35s ease both;
@@ -1497,32 +1532,103 @@ img {
   }
 }
 
+
+/* =========================================================
+   AUTH CLOSE BUTTON
+========================================================= */
+
 .modal-close {
   position: absolute;
 
   top: 18px;
   right: 20px;
 
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
   border: 0;
+
+  border-radius: 50%;
 
   background: transparent;
 
   font-size: 28px;
 
+  line-height: 1;
+
   color: var(--muted);
 
   transition:
-    transform 0.25s ease;
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
 .modal-close:hover {
   transform: rotate(90deg);
 
+  background: var(--pink-light);
+
   color: var(--pink-dark);
 }
 
+
+/* =========================================================
+   AUTH LOGO
+========================================================= */
+
+.auth-logo {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-bottom: 20px;
+}
+
+.auth-logo img {
+  width: 82px;
+  height: 82px;
+
+  object-fit: contain;
+
+  border-radius: 50%;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.auth-logo img:hover {
+  transform: scale(1.06);
+}
+
+
+/* =========================================================
+   AUTH HEADER
+========================================================= */
+
 .auth-header {
   margin-bottom: 25px;
+
+  text-align: center;
+}
+
+.auth-header .eyebrow {
+  margin-bottom: 8px;
+
+  color: var(--gold);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
 }
 
 .auth-header h2 {
@@ -1530,14 +1636,29 @@ img {
 
   font-size: 38px;
 
-  margin-bottom: 8px;
+  line-height: 1;
+
+  margin-bottom: 12px;
+
+  color: var(--text);
+}
+
+.auth-header h2 span {
+  color: var(--gold);
 }
 
 .auth-header p:last-child {
   color: var(--muted);
 
   font-size: 14px;
+
+  line-height: 1.6;
 }
+
+
+/* =========================================================
+   AUTH FORM
+========================================================= */
 
 .auth-modal form {
   display: flex;
@@ -1572,7 +1693,12 @@ img {
 
   transition:
     border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.auth-modal input::placeholder {
+  color: #aaa0a3;
 }
 
 .auth-modal input:focus,
@@ -1580,6 +1706,8 @@ img {
 .admin-form textarea:focus,
 .admin-form select:focus {
   border-color: var(--pink);
+
+  background: white;
 
   box-shadow:
     0 0 0 4px
@@ -1590,6 +1718,14 @@ img {
   width: 100%;
 
   margin-top: 22px;
+}
+
+.auth-submit:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
 }
 
 .auth-message,
@@ -1603,10 +1739,22 @@ img {
   line-height: 1.5;
 }
 
+.auth-message {
+  padding: 10px 12px;
+
+  border-radius: 10px;
+
+  background: var(--pink-light);
+
+  text-align: center;
+}
+
 .switch-auth {
   width: 100%;
 
   margin-top: 20px;
+
+  padding: 8px;
 
   border: 0;
 
@@ -1615,6 +1763,16 @@ img {
   color: var(--pink-dark);
 
   font-size: 13px;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.switch-auth:hover {
+  color: var(--gold);
+
+  transform: translateY(-1px);
 }
 
 
@@ -1628,7 +1786,6 @@ img {
   z-index: 200;
 
   right: 25px;
-
   bottom: 25px;
 
   padding: 15px 20px;
@@ -1639,7 +1796,8 @@ img {
 
   color: white;
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow);
 
   font-size: 13px;
 
@@ -1732,7 +1890,8 @@ img {
 
   padding: 30px;
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    var(--shadow);
 }
 
 .admin-form h2,
@@ -1788,54 +1947,10 @@ img {
 
   font-size: 11px;
 }
+
+
 /* =========================================================
    ADMIN NAV LINK
-========================================================= */
-
-.admin-nav-link {
-  position: relative;
-  color: var(--pink-dark) !important;
-  font-weight: 700;
-}
-
-.admin-nav-link::before {
-  content: "✦";
-  margin-right: 6px;
-  color: var(--gold);
-  display: inline-block;
-
-  animation: adminStar 2s ease-in-out infinite;
-}
-
-.admin-nav-link:hover {
-  color: var(--gold) !important;
-}
-
-@keyframes adminStar {
-  0%,
-  100% {
-    transform: rotate(0deg) scale(1);
-  }
-
-  50% {
-    transform: rotate(15deg) scale(1.15);
-  }
-}
-
-
-/* Logged-in user */
-
-.welcome-user {
-  color: var(--muted);
-  font-size: 12px;
-  max-width: 130px;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-/* =========================================================
-   ADMIN NAVIGATION
 ========================================================= */
 
 .admin-nav-link {
@@ -1862,15 +1977,32 @@ img {
 
 
 /* =========================================================
+   LOGGED-IN USER
+========================================================= */
+
+.welcome-user {
+  color: var(--muted);
+
+  font-size: 12px;
+
+  max-width: 130px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
    MOBILE ADMIN NAV
 ========================================================= */
 
 @media (max-width: 900px) {
-
   .admin-nav-link {
     display: none;
   }
-
 }
 
 
@@ -1898,14 +2030,18 @@ img {
   overflow: hidden;
 }
 
+
 /* =========================================================
    ORDER SUCCESS
 ========================================================= */
 
 .order-success {
   min-height: 65vh;
+
   padding: 60px 20px;
-  animation: successEnter 0.6s ease both;
+
+  animation:
+    successEnter 0.6s ease both;
 }
 
 .success-icon {
@@ -1913,6 +2049,7 @@ img {
   height: 75px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -1925,6 +2062,7 @@ img {
   color: var(--gold-light);
 
   font-size: 35px;
+
   font-weight: 700;
 
   border: 1px solid var(--gold);
@@ -1943,6 +2081,7 @@ img {
   color: var(--gold);
 
   font-size: 11px;
+
   font-weight: 700;
 
   letter-spacing: 3px;
@@ -1972,11 +2111,13 @@ img {
 @keyframes successPop {
   from {
     opacity: 0;
+
     transform: scale(0.5);
   }
 
   to {
     opacity: 1;
+
     transform: scale(1);
   }
 }
@@ -1984,15 +2125,21 @@ img {
 @keyframes successEnter {
   from {
     opacity: 0;
+
     transform: translateY(25px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
   }
 }
-/* Animated footer lights */
+
+
+/* =========================================================
+   FOOTER ANIMATED LIGHTS
+========================================================= */
 
 .footer::before {
   content: "";
@@ -2039,6 +2186,11 @@ img {
     infinite reverse;
 }
 
+
+/* =========================================================
+   FOOTER GRID
+========================================================= */
+
 .footer-grid {
   position: relative;
 
@@ -2054,10 +2206,53 @@ img {
   padding-bottom: 50px;
 }
 
+
+/* =========================================================
+   FOOTER LOGO
+========================================================= */
+
+.footer-logo-wrapper {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 15px;
+}
+
+.footer-logo-image {
+  width: 48px;
+  height: 48px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+}
+
 .footer-logo {
   display: inline-block;
 
-  margin-bottom: 15px;
+  margin: 0;
+
+  font-family: Georgia, serif;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  letter-spacing: -1px;
+
+  color: white;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: translateY(-2px);
 }
 
 .footer-grid p {
@@ -2124,6 +2319,11 @@ img {
   transform: translateX(0);
 }
 
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+
 .footer-bottom {
   position: relative;
 
@@ -2139,6 +2339,46 @@ img {
   color: #a9979b;
 
   font-size: 11px;
+}
+
+.footer-credit {
+  margin-top: 7px;
+}
+
+.footer-heart {
+  color: var(--pink);
+
+  margin: 0 5px;
+}
+
+.footer-credit strong {
+  color: #ddd1d3;
+
+  margin-left: 4px;
+}
+
+.footer-star {
+  display: inline-block;
+
+  margin-top: 10px;
+
+  color: var(--gold);
+
+  font-size: 14px;
+
+  animation:
+    starFloat 3s ease-in-out infinite;
+}
+
+@keyframes starFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 @keyframes footerGlow {
@@ -2215,6 +2455,13 @@ img {
   .cart-summary {
     position: static;
   }
+
+  .footer-grid {
+    grid-template-columns:
+      1.5fr 1fr 1fr;
+
+    gap: 30px;
+  }
 }
 
 
@@ -2229,17 +2476,38 @@ img {
       min(100% - 25px, 1180px);
   }
 
+
+  /* HEADER */
+
   .header-inner {
     height: 68px;
+
+    gap: 10px;
   }
 
   .logo {
-    font-size: 25px;
+    font-size: 23px;
+
+    gap: 6px;
+  }
+
+  .logo img {
+    width: 34px;
+    height: 34px;
   }
 
   .header-button {
     display: none;
   }
+
+  .cart-button {
+    padding: 8px 11px;
+
+    font-size: 12px;
+  }
+
+
+  /* HERO */
 
   .hero-banner {
     height: 600px;
@@ -2281,6 +2549,7 @@ img {
 
   .hero-text {
     left: 25px;
+
     right: 25px;
 
     top: 55%;
@@ -2321,6 +2590,9 @@ img {
     font-size: 13px;
   }
 
+
+  /* SECTIONS */
+
   .categories-section,
   .products-section {
     padding: 65px 0;
@@ -2336,6 +2608,9 @@ img {
     grid-template-columns: 1fr;
   }
 
+
+  /* PICK */
+
   .pick-content {
     padding: 35px;
   }
@@ -2344,6 +2619,9 @@ img {
     font-size: 36px;
   }
 
+
+  /* CART */
+
   .cart-item {
     grid-template-columns:
       70px 1fr;
@@ -2351,6 +2629,7 @@ img {
 
   .cart-item > img {
     width: 70px;
+
     height: 70px;
   }
 
@@ -2358,6 +2637,9 @@ img {
   .remove-button {
     grid-column: 2;
   }
+
+
+  /* FOOTER */
 
   .footer {
     margin-top: 55px;
@@ -2371,9 +2653,61 @@ img {
     gap: 35px;
   }
 
-  .auth-modal {
-    padding: 30px 22px;
+  .footer-logo-wrapper {
+    gap: 9px;
   }
+
+  .footer-logo-image {
+    width: 42px;
+
+    height: 42px;
+  }
+
+  .footer-logo {
+    font-size: 27px;
+  }
+
+
+  /* AUTH MODAL */
+
+  .auth-modal {
+    width: 100%;
+
+    max-width: 450px;
+
+    padding: 32px 22px;
+
+    border-radius: 22px;
+  }
+
+  .auth-logo {
+    margin-bottom: 16px;
+  }
+
+  .auth-logo img {
+    width: 68px;
+
+    height: 68px;
+  }
+
+  .auth-header {
+    margin-bottom: 20px;
+  }
+
+  .auth-header h2 {
+    font-size: 32px;
+  }
+
+  .auth-header p:last-child {
+    font-size: 13px;
+  }
+
+  .modal-close {
+    top: 14px;
+
+    right: 14px;
+  }
+
 }
 
 
@@ -2383,6 +2717,26 @@ img {
 
 @media (max-width: 380px) {
 
+  .header-inner {
+    gap: 6px;
+  }
+
+  .logo {
+    font-size: 21px;
+  }
+
+  .logo img {
+    width: 31px;
+
+    height: 31px;
+  }
+
+  .cart-button {
+    padding: 7px 9px;
+
+    font-size: 11px;
+  }
+
   .hero-banner {
     height: 560px;
 
@@ -2391,6 +2745,7 @@ img {
 
   .hero-text {
     left: 20px;
+
     right: 20px;
   }
 
@@ -2405,6 +2760,21 @@ img {
   .hero-button {
     padding: 12px 17px;
   }
+
+  .auth-modal {
+    padding: 28px 18px;
+  }
+
+  .auth-logo img {
+    width: 62px;
+
+    height: 62px;
+  }
+
+  .auth-header h2 {
+    font-size: 29px;
+  }
+
 }
 
 
@@ -2425,4 +2795,5 @@ img {
 
     transition-duration: 0.01ms !important;
   }
+
 }
