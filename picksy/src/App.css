@@ -1788,6 +1788,90 @@ img {
 
   font-size: 11px;
 }
+/* =========================================================
+   ADMIN NAV LINK
+========================================================= */
+
+.admin-nav-link {
+  position: relative;
+  color: var(--pink-dark) !important;
+  font-weight: 700;
+}
+
+.admin-nav-link::before {
+  content: "✦";
+  margin-right: 6px;
+  color: var(--gold);
+  display: inline-block;
+
+  animation: adminStar 2s ease-in-out infinite;
+}
+
+.admin-nav-link:hover {
+  color: var(--gold) !important;
+}
+
+@keyframes adminStar {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(15deg) scale(1.15);
+  }
+}
+
+
+/* Logged-in user */
+
+.welcome-user {
+  color: var(--muted);
+  font-size: 12px;
+  max-width: 130px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* =========================================================
+   ADMIN NAVIGATION
+========================================================= */
+
+.admin-nav-link {
+  position: relative;
+
+  color: var(--pink-dark) !important;
+
+  font-weight: 700;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.admin-nav-link:hover {
+  color: var(--gold) !important;
+
+  transform: translateY(-2px);
+}
+
+.admin-nav-link::after {
+  background: var(--gold) !important;
+}
+
+
+/* =========================================================
+   MOBILE ADMIN NAV
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .admin-nav-link {
+    display: none;
+  }
+
+}
 
 
 /* =========================================================
@@ -1814,7 +1898,100 @@ img {
   overflow: hidden;
 }
 
+/* =========================================================
+   ORDER SUCCESS
+========================================================= */
 
+.order-success {
+  min-height: 65vh;
+  padding: 60px 20px;
+  animation: successEnter 0.6s ease both;
+}
+
+.success-icon {
+  width: 75px;
+  height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 25px;
+
+  border-radius: 50%;
+
+  background: var(--black);
+
+  color: var(--gold-light);
+
+  font-size: 35px;
+  font-weight: 700;
+
+  border: 1px solid var(--gold);
+
+  box-shadow:
+    0 0 0 8px rgba(199, 163, 90, 0.08),
+    0 15px 40px rgba(24, 20, 22, 0.15);
+
+  animation:
+    successPop 0.7s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.order-success .eyebrow {
+  color: var(--gold);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 12px;
+}
+
+.order-success h1 {
+  font-family: Georgia, serif;
+
+  font-size:
+    clamp(35px, 5vw, 55px);
+
+  margin-bottom: 15px;
+
+  color: var(--text);
+}
+
+.order-success > p:not(.eyebrow) {
+  color: var(--muted);
+
+  line-height: 1.8;
+
+  margin-bottom: 28px;
+}
+
+@keyframes successPop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes successEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* Animated footer lights */
 
 .footer::before {
