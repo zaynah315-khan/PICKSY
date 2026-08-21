@@ -1,41 +1,71 @@
- import heroImage from "../assets/hero.jpeg";
+ import heroBanner from "../assets/hero-banner.jpeg";
 
 function Hero() {
   return (
-    <section
-      className="hero"
-      style={{
-        backgroundImage: `url(${heroImage})`
-      }}
-    >
-      <div className="hero-overlay"></div>
+    <section className="hero">
+      <div className="hero-banner">
 
-      <div className="container hero-content">
+        {/* Hero Image */}
+        <img
+          src={heroBanner}
+          alt="Picksy trending accessories"
+          className="hero-banner-image"
+        />
 
+        {/* Dark overlay */}
+        <div className="hero-overlay"></div>
+
+        {/* Trending Marquee */}
+        <div className="hero-marquee">
+          <div className="marquee-track">
+            <span>TRENDING ACCESSORIES</span>
+            <b>✦</b>
+
+            <span>BEAUTY ESSENTIALS</span>
+            <b>✦</b>
+
+            <span>NEW ARRIVALS</span>
+            <b>✦</b>
+
+            <span>EVERYDAY LUXE</span>
+            <b>✦</b>
+
+            <span>TRENDING ACCESSORIES</span>
+            <b>✦</b>
+
+            <span>BEAUTY ESSENTIALS</span>
+            <b>✦</b>
+
+            <span>NEW ARRIVALS</span>
+            <b>✦</b>
+
+            <span>EVERYDAY LUXE</span>
+            <b>✦</b>
+          </div>
+        </div>
+
+        {/* Hero Content */}
         <div className="hero-text">
 
-          <p className="eyebrow">
-            CURATED JUST FOR YOU
+          <p className="hero-eyebrow">
+            ✦ CURATED FOR YOU ✦
           </p>
 
           <h1>
-            Find little things
+            Your Style.
             <br />
-            you'll <span>love.</span>
+            <span>Your Picksy.</span>
           </h1>
 
           <p className="hero-description">
-            Discover trendy accessories,
-            beauty essentials and skincare
-            picks made for your everyday glow.
+            Discover trendy accessories, beauty essentials
+            and little luxuries made for your everyday style.
           </p>
 
-          <a
-            href="#products"
-            className="primary-button"
-          >
-            Explore Picks →
-          </a>
+          <button className="hero-button">
+            Shop The Collection
+            <span>→</span>
+          </button>
 
         </div>
 

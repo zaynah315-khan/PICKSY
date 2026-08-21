@@ -1,12 +1,7 @@
-function ProductCard({
-  product,
-  onAdd
-}) {
+ function ProductCard({ product, onAdd }) {
   return (
     <article className="product-card">
-
       <div className="product-image">
-
         {product.featured && (
           <span className="product-badge">
             Pick
@@ -17,23 +12,19 @@ function ProductCard({
           src={product.image}
           alt={product.name}
         />
-
       </div>
 
       <div className="product-info">
-
         <p className="product-category">
           {product.category}
         </p>
 
-        <h3>
-          {product.name}
-        </h3>
+        <h3>{product.name}</h3>
 
         <div className="product-bottom">
-
           <strong>
-            Rs. {Number(product.price).toLocaleString()}
+            Rs.{" "}
+            {Number(product.price).toLocaleString()}
           </strong>
 
           <button
@@ -42,11 +33,8 @@ function ProductCard({
           >
             +
           </button>
-
         </div>
-
       </div>
-
     </article>
   );
 }

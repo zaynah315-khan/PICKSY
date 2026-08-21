@@ -1,34 +1,38 @@
-import { useState } from "react";
+ import { useState } from "react";
+
 import Hero from "../components/Hero";
 import CategoryCard from "../components/CategoryCard";
 import PickOfTheDay from "../components/PickOfTheDay";
 import ProductCard from "../components/ProductCard";
 import Loading from "../components/Loading";
 
+import accessoriesImage from "../assets/accessories.jpeg";
+import beautyImage from "../assets/beauty.jpeg";
+import skincareImage from "../assets/skincare.jpeg";
+
 function Home({
   products,
   loading,
-  onAddToCart
+  onAddToCart,
 }) {
-  const [category, setCategory] =
-    useState("All");
+  const [category, setCategory] = useState("All");
 
   const categories = [
     {
       title: "Accessories",
       description: "Cute little details",
-      image: "/images/accessories.jpg"
+      image: accessoriesImage,
     },
     {
       title: "Beauty",
       description: "Glow your way",
-      image: "/images/beauty.jpg"
+      image: beautyImage,
     },
     {
       title: "Skincare",
       description: "Everyday essentials",
-      image: "/images/skincare.jpg"
-    }
+      image: skincareImage,
+    },
   ];
 
   const filteredProducts =
@@ -41,64 +45,61 @@ function Home({
 
   const featuredProduct =
     products.find(
-      (product) => product.featured
+      (product) => product.featured === true
     ) || products[0];
 
   return (
     <main>
-
       <Hero />
 
+      {/* Categories */}
       <section
         id="categories"
         className="categories-section"
       >
-
         <div className="container">
-
           <div className="section-heading">
             <p className="eyebrow">
               SHOP YOUR WAY
             </p>
 
             <h2>
-              What are you
-              <span> picking?</span>
+              What are you{" "}
+              <span>picking?</span>
             </h2>
           </div>
 
           <div className="categories-grid">
-
             {categories.map((item) => (
               <CategoryCard
                 key={item.title}
-                {...item}
+                title={item.title}
+                description={item.description}
+                image={item.image}
                 onClick={() =>
                   setCategory(item.title)
                 }
               />
             ))}
-
           </div>
-
         </div>
-
       </section>
 
-      <PickOfTheDay
-        product={featuredProduct}
-        onAdd={onAddToCart}
-      />
+      {/* Pick of the Day */}
+      {featuredProduct && (
+        <PickOfTheDay
+          product={featuredProduct}
+          onAdd={onAddToCart}
+        />
+      )}
 
+      {/* Products */}
       <section
         id="products"
         className="products-section"
       >
-
         <div className="container">
-
           <div className="section-heading products-heading">
-
             <div>
               <p className="eyebrow">
                 OUR PICKS
@@ -110,12 +111,11 @@ function Home({
             </div>
 
             <div className="filter-buttons">
-
               {[
                 "All",
                 "Accessories",
                 "Beauty",
-                "Skincare"
+                "Skincare",
               ].map((item) => (
                 <button
                   key={item}
@@ -131,16 +131,17 @@ function Home({
                   {item}
                 </button>
               ))}
-
             </div>
-
           </div>
 
           {loading ? (
             <Loading />
+          ) : filteredProducts.length === 0 ? (
+            <div className="loading">
+              <p>No products found.</p>
+            </div>
           ) : (
             <div className="products-grid">
-
               {filteredProducts.map(
                 (product) => (
                   <ProductCard
@@ -150,14 +151,10 @@ function Home({
                   />
                 )
               )}
-
             </div>
           )}
-
         </div>
-
       </section>
-
     </main>
   );
 }
